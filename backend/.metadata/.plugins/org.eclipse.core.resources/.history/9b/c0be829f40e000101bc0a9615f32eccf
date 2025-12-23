@@ -1,0 +1,21 @@
+package com.example.aqi.service;
+
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AqiService {
+
+    private final AqiApiClient apiClient;
+
+    public AqiService(AqiApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
+
+    @Cacheable(value = "aqiCache", key = "#city.toLowerCase()")
+    public AqiResponse getAqiByCity(String city) throws Exception {
+        String rawJson = apiClient.fetchByCity(city);
+        return AqiMapper.map(rawJson);
+    }
+}
+

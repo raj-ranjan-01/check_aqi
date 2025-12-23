@@ -1,0 +1,27 @@
+package com.example.aqi.service;
+
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Component
+public class AqiApiClient {
+
+    @Value("${aqi.api.token}")
+    private String token;
+
+    private final WebClient webClient;
+
+    public AqiApiClient() {
+        this.webClient = WebClient.create();
+    }
+
+    public String fetchByCity(String city) {
+        return webClient.get()
+                .uri("https://api.waqi.info/feed/{city}/?token={token}", city, token)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+    }
+}

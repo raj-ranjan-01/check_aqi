@@ -1,0 +1,32 @@
+package com.example.aqi.service;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class AqiMapper {
+
+    public static response map(String json) throws Exception {
+
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode data = mapper.readTree(json).path("data");
+
+        Map<String, Double> pollutants = new HashMap<>();
+        data.path("iaqi").fields().forEachRemaining(e ->
+            pollutants.put(e.getKey(), e.getValue().path("v").asDouble())
+        );
+
+        int aqi = data.path("aqi").asInt();
+
+        return response.builder()
+                .city(data.path("city").path("name").asText())
+                .aqi(aqi)
+                .dominantPollutant(data.path("dominentpol").asText())
+                .healthAdvice(AqiHealthAdvice.getAdvice(aqi))
+                .pollutants(pollutants)
+                .build();
+    }
+}
+

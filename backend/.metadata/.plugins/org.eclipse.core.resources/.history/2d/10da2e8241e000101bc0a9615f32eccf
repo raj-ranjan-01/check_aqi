@@ -1,0 +1,3 @@
+spring.application.name=aqi
+server.port=8080
+
