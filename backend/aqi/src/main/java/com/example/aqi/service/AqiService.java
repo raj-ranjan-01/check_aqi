@@ -20,7 +20,6 @@ public class AqiService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    // ===== PUBLIC API =====
     @Cacheable(value = "aqiCache", key = "#city.toLowerCase()")
     public AqiResponse getAqiByCity(String city) {
         try {
@@ -32,7 +31,6 @@ public class AqiService {
         }
     }
 
-    // ===== INTERNAL LOGIC =====
     private AqiResponse parseResponse(String json) throws Exception {
 
         JsonNode data = objectMapper.readTree(json).path("data");
@@ -63,7 +61,6 @@ public class AqiService {
         return "Hazardous air quality. Stay indoors.";
     }
 
-    // ===== RESPONSE MODEL (INNER CLASS) =====
     public static class AqiResponse {
         public String city;
         public int aqi;

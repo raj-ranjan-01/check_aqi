@@ -1,2 +1,3 @@
-2025/12/24-01:59:13.988 874 Creating DB C:\Users\Raj Ranjan\Desktop\spring boot\aqi\backend\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb since it was missing.
-2025/12/24-01:59:14.360 874 Reusing MANIFEST C:\Users\Raj Ranjan\Desktop\spring boot\aqi\backend\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2025/12/24-02:04:32.253 491c Reusing MANIFEST C:\Users\Raj Ranjan\Desktop\spring boot\aqi\backend\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2025/12/24-02:04:32.449 491c Recovering log #3
+2025/12/24-02:04:32.469 491c Reusing old log C:\Users\Raj Ranjan\Desktop\spring boot\aqi\backend\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/000003.log 
